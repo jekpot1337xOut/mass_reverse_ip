@@ -4,11 +4,14 @@ from threading import Thread
 from thread_pool import ThreadPool , CustomThread
 from os import system
 th = ThreadPool(max_workers=300)
+found = 0
+file = open("Results.txt","a+")
 def setTitle(title):
     try:
         system(f"title \"{title}\"")
     except:
         pass
+
 def check(ip):
     global file
     global found
@@ -25,7 +28,7 @@ def check(ip):
     except Exception as e:
         check(ip)
 
-Thread(target,args=(int(input("Enter Proxy Refresh Interval : ")),)).start()
+Thread(target=args=(int(input("Enter Threads : ")),)).start()
 list_ips = [x.strip() for x in open("ips.txt").readlines()]
 for ip in list_ips:
     th.appendThread(CustomThread(target=check,args=(ip,)))
