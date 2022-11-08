@@ -25,6 +25,8 @@ def check(ip):
     except Exception as e:
         check(ip)
 
+Thread(target,args=(int(input("Enter Proxy Refresh Interval : ")),)).start()
+ev.wait(3)
 list_ips = [x.strip() for x in open("ips.txt").readlines()]
 for ip in list_ips:
     th.appendThread(CustomThread(target=check,args=(ip,)))
