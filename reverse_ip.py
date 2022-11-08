@@ -1,6 +1,6 @@
 from requests import get
 from random import randint
-from threading import Event , Thread
+from threading import Thread
 from thread_pool import ThreadPool , CustomThread
 from os import system
 th = ThreadPool(max_workers=300)
@@ -26,7 +26,6 @@ def check(ip):
         check(ip)
 
 Thread(target,args=(int(input("Enter Proxy Refresh Interval : ")),)).start()
-ev.wait(3)
 list_ips = [x.strip() for x in open("ips.txt").readlines()]
 for ip in list_ips:
     th.appendThread(CustomThread(target=check,args=(ip,)))
